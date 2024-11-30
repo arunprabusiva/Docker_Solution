@@ -47,5 +47,5 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run -d --name my-app-container1 -p 8080:8080 manimaran7499/app:latest
+        docker run -d --name my-app-container -p 8080:8080 manimaran7499/app:latest
         
