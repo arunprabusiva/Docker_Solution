@@ -5,7 +5,8 @@ on:
 
 jobs:
   build:
-    runs-on: MyLaptop
+    runs-on: ubuntu-latest  
+#    runs-on: MyLaptop
 
     env:
       DOCKER_CLI_EXPERIMENTAL: enabled
@@ -31,3 +32,19 @@ jobs:
       with:
         push: true
         tags: manimaran7499/app:latest
+
+
+  deploy:
+    runs-on: MyLaptop 
+
+    steps:
+    - name: Login to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_SECRET }}
+
+    - name: Pull Docker image
+      run: docker pull manimaran7499/app:latest
+
+    - name: Run Docker container
+      run: |
+        docker run -d --name my-app-container -p 8080:8080 manimaran7499/app:latest
+        
