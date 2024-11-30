@@ -7,6 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_CLI_EXPERIMENTAL: enabled
+      BUILDKIT_PROGRESS: plain    
+
     steps:
     - uses: actions/checkout@v4
       
@@ -26,4 +30,4 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: user/app:latest
+        tags: manimaran7499/app:latest
